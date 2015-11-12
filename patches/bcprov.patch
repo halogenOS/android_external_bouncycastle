@@ -1,7 +1,23 @@
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/ASN1Boolean.java bcprov-jdk15on-152/org/bouncycastle/asn1/ASN1Boolean.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/ASN1Boolean.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/ASN1Boolean.java	2014-07-28 19:51:54.000000000 +0000
-@@ -23,7 +23,9 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/ASN1Null.java bcprov-jdk15on-150/org/bouncycastle/asn1/ASN1Null.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/ASN1Null.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/ASN1Null.java	2013-01-31 02:26:40.000000000 +0000
+@@ -11,9 +11,11 @@
+     /**
+      * @deprecated use DERNull.INSTANCE
+      */
+-    public ASN1Null()
++    // BEGIN android-changed
++    /*package*/ ASN1Null()
+     {
+     }
++    // END android-changed
+ 
+     public static ASN1Null getInstance(Object o)
+     {
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/DERBoolean.java bcprov-jdk15on-150/org/bouncycastle/asn1/DERBoolean.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/DERBoolean.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/DERBoolean.java	2013-12-12 00:35:05.000000000 +0000
+@@ -10,7 +10,9 @@
      private static final byte[] TRUE_VALUE = new byte[] { (byte)0xff };
      private static final byte[] FALSE_VALUE = new byte[] { 0 };
  
@@ -53,26 +69,24 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/ASN1Boolean.java bcprov
      {
          this.value = (value) ? TRUE_VALUE : FALSE_VALUE;
      }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/ASN1Null.java bcprov-jdk15on-152/org/bouncycastle/asn1/ASN1Null.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/ASN1Null.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/ASN1Null.java	2014-07-28 19:51:54.000000000 +0000
-@@ -8,6 +8,12 @@
- public abstract class ASN1Null
-     extends ASN1Primitive
- {
-+    // BEGIN android-added
-+    /*package*/ ASN1Null()
-+    {
-+    }
-+
-+    // END android-added
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/DERNull.java bcprov-jdk15on-150/org/bouncycastle/asn1/DERNull.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/DERNull.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/DERNull.java	2013-01-31 02:26:40.000000000 +0000
+@@ -15,7 +15,9 @@
      /**
-      * Return an instance of ASN.1 NULL from the passed in object.
-      * <p>
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/ASN1ObjectIdentifier.java bcprov-jdk15on-152/org/bouncycastle/asn1/ASN1ObjectIdentifier.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/ASN1ObjectIdentifier.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/ASN1ObjectIdentifier.java	2014-07-28 19:51:54.000000000 +0000
-@@ -152,7 +152,13 @@
+      * @deprecated use DERNull.INSTANCE
+      */
+-    public DERNull()
++    // BEGIN android-changed
++    protected DERNull()
++    // END android-changed
+     {
+     }
+ 
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/DERObjectIdentifier.java bcprov-jdk15on-150/org/bouncycastle/asn1/DERObjectIdentifier.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/DERObjectIdentifier.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/DERObjectIdentifier.java	2013-12-12 00:35:05.000000000 +0000
+@@ -162,7 +162,13 @@
              }
          }
  
@@ -101,24 +115,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/ASN1ObjectIdentifier.ja
 +        // END android-changed
      }
  
-      /**
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/DERNull.java bcprov-jdk15on-152/org/bouncycastle/asn1/DERNull.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/DERNull.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/DERNull.java	2013-01-31 02:26:40.000000000 +0000
-@@ -15,7 +15,9 @@
-     /**
-      * @deprecated use DERNull.INSTANCE
-      */
--    public DERNull()
-+    // BEGIN android-changed
-+    protected DERNull()
-+    // END android-changed
-     {
-     }
- 
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/DERPrintableString.java bcprov-jdk15on-152/org/bouncycastle/asn1/DERPrintableString.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/DERPrintableString.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/DERPrintableString.java	2014-07-28 19:51:54.000000000 +0000
+     DERObjectIdentifier(DERObjectIdentifier oid, String branchID)
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/DERPrintableString.java bcprov-jdk15on-150/org/bouncycastle/asn1/DERPrintableString.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/DERPrintableString.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/DERPrintableString.java	2013-01-31 02:26:40.000000000 +0000
 @@ -12,7 +12,9 @@
      extends ASN1Primitive
      implements ASN1String
@@ -130,9 +130,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/DERPrintableString.java
  
      /**
       * return a printable string from the passed in object.
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/StreamUtil.java bcprov-jdk15on-152/org/bouncycastle/asn1/StreamUtil.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/StreamUtil.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/StreamUtil.java	2014-05-05 17:17:14.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/StreamUtil.java bcprov-jdk15on-150/org/bouncycastle/asn1/StreamUtil.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/StreamUtil.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/StreamUtil.java	2014-05-05 17:17:14.000000000 +0000
 @@ -8,7 +8,9 @@
  
  class StreamUtil
@@ -162,9 +162,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/StreamUtil.java bcprov-
      }
  
      static int calculateBodyLength(
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/cms/ContentInfo.java bcprov-jdk15on-152/org/bouncycastle/asn1/cms/ContentInfo.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/cms/ContentInfo.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/cms/ContentInfo.java	2013-12-12 00:35:05.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/cms/ContentInfo.java bcprov-jdk15on-150/org/bouncycastle/asn1/cms/ContentInfo.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/cms/ContentInfo.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/cms/ContentInfo.java	2013-12-12 00:35:05.000000000 +0000
 @@ -28,7 +28,9 @@
   */
  public class ContentInfo
@@ -176,9 +176,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/cms/ContentInfo.java bc
  {
      private ASN1ObjectIdentifier contentType;
      private ASN1Encodable        content;
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/pkcs/PKCSObjectIdentifiers.java bcprov-jdk15on-152/org/bouncycastle/asn1/pkcs/PKCSObjectIdentifiers.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/pkcs/PKCSObjectIdentifiers.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/pkcs/PKCSObjectIdentifiers.java	2013-12-12 00:35:05.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/pkcs/PKCSObjectIdentifiers.java bcprov-jdk15on-150/org/bouncycastle/asn1/pkcs/PKCSObjectIdentifiers.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/pkcs/PKCSObjectIdentifiers.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/pkcs/PKCSObjectIdentifiers.java	2013-12-12 00:35:05.000000000 +0000
 @@ -13,10 +13,12 @@
      static final ASN1ObjectIdentifier    pkcs_1                    = new ASN1ObjectIdentifier("1.2.840.113549.1.1");
      /** PKCS#1: 1.2.840.113549.1.1.1 */
@@ -220,9 +220,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/pkcs/PKCSObjectIdentifi
  
      //
      // md5 OBJECT IDENTIFIER ::=
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/x509/AuthorityKeyIdentifier.java bcprov-jdk15on-152/org/bouncycastle/asn1/x509/AuthorityKeyIdentifier.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/x509/AuthorityKeyIdentifier.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/x509/AuthorityKeyIdentifier.java	2014-07-28 19:51:54.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/x509/AuthorityKeyIdentifier.java bcprov-jdk15on-150/org/bouncycastle/asn1/x509/AuthorityKeyIdentifier.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/x509/AuthorityKeyIdentifier.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/x509/AuthorityKeyIdentifier.java	2013-05-25 02:14:15.000000000 +0000
 @@ -14,7 +14,9 @@
  import org.bouncycastle.asn1.DERSequence;
  import org.bouncycastle.asn1.DERTaggedObject;
@@ -256,9 +256,34 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/x509/AuthorityKeyIdenti
          byte[]  resBuf = new byte[digest.getDigestSize()];
  
          byte[] bytes = spki.getPublicKeyData().getBytes();
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/x509/X509Name.java bcprov-jdk15on-152/org/bouncycastle/asn1/x509/X509Name.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/x509/X509Name.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/x509/X509Name.java	2013-12-12 00:35:05.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/x509/SubjectKeyIdentifier.java bcprov-jdk15on-150/org/bouncycastle/asn1/x509/SubjectKeyIdentifier.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/x509/SubjectKeyIdentifier.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/x509/SubjectKeyIdentifier.java	2013-01-31 02:26:40.000000000 +0000
+@@ -6,7 +6,9 @@
+ import org.bouncycastle.asn1.ASN1TaggedObject;
+ import org.bouncycastle.asn1.DEROctetString;
+ import org.bouncycastle.crypto.Digest;
+-import org.bouncycastle.crypto.digests.SHA1Digest;
++// BEGIN android-changed
++import org.bouncycastle.crypto.digests.AndroidDigestFactory;
++// END android-changed
+ 
+ /**
+  * The SubjectKeyIdentifier object.
+@@ -124,7 +126,9 @@
+ 
+     private static byte[] getDigest(SubjectPublicKeyInfo spki)
+     {
+-        Digest digest = new SHA1Digest();
++        // BEGIN android-changed
++        Digest digest = AndroidDigestFactory.getSHA1();
++        // END android-changed
+         byte[]  resBuf = new byte[digest.getDigestSize()];
+ 
+         byte[] bytes = spki.getPublicKeyData().getBytes();
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/x509/X509Name.java bcprov-jdk15on-150/org/bouncycastle/asn1/x509/X509Name.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/x509/X509Name.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/x509/X509Name.java	2013-12-12 00:35:05.000000000 +0000
 @@ -255,8 +255,10 @@
       */
      public static final Hashtable SymbolLookUp = DefaultLookUp;
@@ -283,9 +308,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/x509/X509Name.java bcpr
              }
          }
      }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/x509/X509NameTokenizer.java bcprov-jdk15on-152/org/bouncycastle/asn1/x509/X509NameTokenizer.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/x509/X509NameTokenizer.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/x509/X509NameTokenizer.java	2013-05-25 02:14:15.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/x509/X509NameTokenizer.java bcprov-jdk15on-150/org/bouncycastle/asn1/x509/X509NameTokenizer.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/x509/X509NameTokenizer.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/x509/X509NameTokenizer.java	2013-05-25 02:14:15.000000000 +0000
 @@ -78,6 +78,17 @@
                  }
                  else
@@ -304,9 +329,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/x509/X509NameTokenizer.
                      buf.append(c);
                  }
              }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/asn1/x9/ECNamedCurveTable.java bcprov-jdk15on-152/org/bouncycastle/asn1/x9/ECNamedCurveTable.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/asn1/x9/ECNamedCurveTable.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/asn1/x9/ECNamedCurveTable.java	2014-07-28 19:51:54.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/asn1/x9/ECNamedCurveTable.java bcprov-jdk15on-150/org/bouncycastle/asn1/x9/ECNamedCurveTable.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/asn1/x9/ECNamedCurveTable.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/asn1/x9/ECNamedCurveTable.java	2013-12-12 00:35:05.000000000 +0000
 @@ -6,7 +6,9 @@
  import org.bouncycastle.asn1.ASN1ObjectIdentifier;
  import org.bouncycastle.asn1.nist.NISTNamedCurves;
@@ -692,95 +717,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/digests/OpenSSLDigest
 +        public SHA512() { super("SHA-512", 128); }
 +    }
 +}
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/ec/CustomNamedCurves.java bcprov-jdk15on-152/org/bouncycastle/crypto/ec/CustomNamedCurves.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/ec/CustomNamedCurves.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/ec/CustomNamedCurves.java	2014-07-28 19:51:54.000000000 +0000
-@@ -10,7 +10,9 @@
- import org.bouncycastle.asn1.x9.X9ECParametersHolder;
- import org.bouncycastle.math.ec.ECCurve;
- import org.bouncycastle.math.ec.ECPoint;
--import org.bouncycastle.math.ec.custom.djb.Curve25519;
-+// BEGIN android-removed
-+// import org.bouncycastle.math.ec.custom.djb.Curve25519;
-+// END android-removed
- import org.bouncycastle.math.ec.custom.sec.SecP192K1Curve;
- import org.bouncycastle.math.ec.custom.sec.SecP192R1Curve;
- import org.bouncycastle.math.ec.custom.sec.SecP224K1Curve;
-@@ -36,32 +38,34 @@
-         return c.configure().setEndomorphism(new GLVTypeBEndomorphism(c, p)).create();
-     }
- 
--    /*
--     * curve25519
--     */
--    static X9ECParametersHolder curve25519 = new X9ECParametersHolder()
--    {
--        protected X9ECParameters createParameters()
--        {
--            byte[] S = null;
--            ECCurve curve = configureCurve(new Curve25519());
--
--            /*
--             * NOTE: Curve25519 was specified in Montgomery form. Rewriting in Weierstrass form
--             * involves substitution of variables, so the base-point x coordinate is 9 + (486662 / 3).
--             * 
--             * The Curve25519 paper doesn't say which of the two possible y values the base
--             * point has. The choice here is guided by language in the Ed25519 paper.
--             * 
--             * (The other possible y value is 5F51E65E475F794B1FE122D388B72EB36DC2B28192839E4DD6163A5D81312C14) 
--             */
--            ECPoint G = curve.decodePoint(Hex.decode("04"
--                + "2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD245A"
--                + "20AE19A1B8A086B4E01EDD2C7748D14C923D4D7E6D7C61B229E9C5A27ECED3D9"));
--
--            return new X9ECParameters(curve, G, curve.getOrder(), curve.getCofactor(), S);
--        }
--    };
-+    // BEGIN android-removed
-+    // /*
-+    //  * curve25519
-+    //  */
-+    // static X9ECParametersHolder curve25519 = new X9ECParametersHolder()
-+    // {
-+    //     protected X9ECParameters createParameters()
-+    //     {
-+    //         byte[] S = null;
-+    //         ECCurve curve = configureCurve(new Curve25519());
-+    //
-+    //         /*
-+    //          * NOTE: Curve25519 was specified in Montgomery form. Rewriting in Weierstrass form
-+    //          * involves substitution of variables, so the base-point x coordinate is 9 + (486662 / 3).
-+    //          * 
-+    //          * The Curve25519 paper doesn't say which of the two possible y values the base
-+    //          * point has. The choice here is guided by language in the Ed25519 paper.
-+    //          * 
-+    //          * (The other possible y value is 5F51E65E475F794B1FE122D388B72EB36DC2B28192839E4DD6163A5D81312C14) 
-+    //          */
-+    //         ECPoint G = curve.decodePoint(Hex.decode("04"
-+    //             + "2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD245A"
-+    //             + "20AE19A1B8A086B4E01EDD2C7748D14C923D4D7E6D7C61B229E9C5A27ECED3D9"));
-+    //
-+    //         return new X9ECParameters(curve, G, curve.getOrder(), curve.getCofactor(), S);
-+    //     }
-+    // };
-+    // END android-removed
- 
-     /*
-      * secp192k1
-@@ -254,7 +258,9 @@
- 
-     static
-     {
--        defineCurve("curve25519", curve25519);
-+        // BEGIN android-removed
-+        // defineCurve("curve25519", curve25519);
-+        // END android-removed
- 
-         defineCurveWithOID("secp192k1", SECObjectIdentifiers.secp192k1, secp192k1);
-         defineCurveWithOID("secp192r1", SECObjectIdentifiers.secp192r1, secp192r1);
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/encodings/OAEPEncoding.java bcprov-jdk15on-152/org/bouncycastle/crypto/encodings/OAEPEncoding.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/encodings/OAEPEncoding.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/encodings/OAEPEncoding.java	2013-05-25 02:14:15.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/encodings/OAEPEncoding.java bcprov-jdk15on-150/org/bouncycastle/crypto/encodings/OAEPEncoding.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/encodings/OAEPEncoding.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/encodings/OAEPEncoding.java	2013-05-25 02:14:15.000000000 +0000
 @@ -6,7 +6,9 @@
  import org.bouncycastle.crypto.CipherParameters;
  import org.bouncycastle.crypto.Digest;
@@ -803,10 +742,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/encodings/OAEPEncodin
      }
      
      public OAEPEncoding(
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/encodings/PKCS1Encoding.java bcprov-jdk15on-152/org/bouncycastle/crypto/encodings/PKCS1Encoding.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/encodings/PKCS1Encoding.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/encodings/PKCS1Encoding.java	2015-04-09 13:10:16.000000000 +0000
-@@ -378,6 +378,12 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/encodings/PKCS1Encoding.java bcprov-jdk15on-150/org/bouncycastle/crypto/encodings/PKCS1Encoding.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/encodings/PKCS1Encoding.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/encodings/PKCS1Encoding.java	2013-01-31 02:26:40.000000000 +0000
+@@ -216,6 +216,12 @@
                  throw new InvalidCipherTextException("unknown block type");
              }
          }
@@ -819,9 +758,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/encodings/PKCS1Encodi
  
          if (useStrictLength && block.length != engine.getOutputBlockSize())
          {
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/engines/DESedeWrapEngine.java bcprov-jdk15on-152/org/bouncycastle/crypto/engines/DESedeWrapEngine.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/engines/DESedeWrapEngine.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/engines/DESedeWrapEngine.java	2014-07-28 19:51:54.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/engines/DESedeWrapEngine.java bcprov-jdk15on-150/org/bouncycastle/crypto/engines/DESedeWrapEngine.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/engines/DESedeWrapEngine.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/engines/DESedeWrapEngine.java	2012-09-17 23:04:47.000000000 +0000
 @@ -6,7 +6,9 @@
  import org.bouncycastle.crypto.Digest;
  import org.bouncycastle.crypto.InvalidCipherTextException;
@@ -844,10 +783,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/engines/DESedeWrapEng
      byte[]  digest = new byte[20];
  
     /**
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/DHParametersHelper.java bcprov-jdk15on-152/org/bouncycastle/crypto/generators/DHParametersHelper.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/DHParametersHelper.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/generators/DHParametersHelper.java	2014-07-28 19:51:54.000000000 +0000
-@@ -3,11 +3,18 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/generators/DHParametersHelper.java bcprov-jdk15on-150/org/bouncycastle/crypto/generators/DHParametersHelper.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/generators/DHParametersHelper.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/generators/DHParametersHelper.java	2012-09-17 23:04:47.000000000 +0000
+@@ -3,10 +3,17 @@
  import java.math.BigInteger;
  import java.security.SecureRandom;
  
@@ -899,9 +838,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/DHParamete
  
          return new BigInteger[] { p, q };
      }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/DSAParametersGenerator.java bcprov-jdk15on-152/org/bouncycastle/crypto/generators/DSAParametersGenerator.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/DSAParametersGenerator.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/generators/DSAParametersGenerator.java	2014-07-28 19:51:54.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/generators/DSAParametersGenerator.java bcprov-jdk15on-150/org/bouncycastle/crypto/generators/DSAParametersGenerator.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/generators/DSAParametersGenerator.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/generators/DSAParametersGenerator.java	2013-12-12 00:35:05.000000000 +0000
 @@ -4,7 +4,9 @@
  import java.security.SecureRandom;
  
@@ -935,9 +874,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/DSAParamet
          {
              throw new IllegalStateException("can only use SHA-1 for generating FIPS 186-2 parameters");
          }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/OpenSSLPBEParametersGenerator.java bcprov-jdk15on-152/org/bouncycastle/crypto/generators/OpenSSLPBEParametersGenerator.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/OpenSSLPBEParametersGenerator.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/generators/OpenSSLPBEParametersGenerator.java	2012-09-17 23:04:47.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/generators/OpenSSLPBEParametersGenerator.java bcprov-jdk15on-150/org/bouncycastle/crypto/generators/OpenSSLPBEParametersGenerator.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/generators/OpenSSLPBEParametersGenerator.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/generators/OpenSSLPBEParametersGenerator.java	2012-09-17 23:04:47.000000000 +0000
 @@ -3,7 +3,9 @@
  import org.bouncycastle.crypto.CipherParameters;
  import org.bouncycastle.crypto.Digest;
@@ -960,9 +899,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/OpenSSLPBE
  
      /**
       * Construct a OpenSSL Parameters generator. 
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/PKCS5S2ParametersGenerator.java bcprov-jdk15on-152/org/bouncycastle/crypto/generators/PKCS5S2ParametersGenerator.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/PKCS5S2ParametersGenerator.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/generators/PKCS5S2ParametersGenerator.java	2013-12-12 00:35:05.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/generators/PKCS5S2ParametersGenerator.java bcprov-jdk15on-150/org/bouncycastle/crypto/generators/PKCS5S2ParametersGenerator.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/generators/PKCS5S2ParametersGenerator.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/generators/PKCS5S2ParametersGenerator.java	2013-12-12 00:35:05.000000000 +0000
 @@ -4,7 +4,9 @@
  import org.bouncycastle.crypto.Digest;
  import org.bouncycastle.crypto.Mac;
@@ -985,9 +924,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/generators/PKCS5S2Par
      }
  
      public PKCS5S2ParametersGenerator(Digest digest)
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/macs/HMac.java bcprov-jdk15on-152/org/bouncycastle/crypto/macs/HMac.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/macs/HMac.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/macs/HMac.java	2013-09-26 18:06:21.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/macs/HMac.java bcprov-jdk15on-150/org/bouncycastle/crypto/macs/HMac.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/macs/HMac.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/macs/HMac.java	2013-09-26 18:06:21.000000000 +0000
 @@ -36,14 +36,18 @@
      {
          blockLengths = new Hashtable();
@@ -1026,10 +965,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/macs/HMac.java bcprov
      }
      
      private static int getByteLength(
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/modes/GCMBlockCipher.java bcprov-jdk15on-152/org/bouncycastle/crypto/modes/GCMBlockCipher.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/modes/GCMBlockCipher.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/modes/GCMBlockCipher.java	2015-04-09 13:10:16.000000000 +0000
-@@ -24,6 +24,11 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/modes/GCMBlockCipher.java bcprov-jdk15on-150/org/bouncycastle/crypto/modes/GCMBlockCipher.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/modes/GCMBlockCipher.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/modes/GCMBlockCipher.java	2013-01-31 02:26:40.000000000 +0000
+@@ -22,6 +22,11 @@
      implements AEADBlockCipher
  {
      private static final int BLOCK_SIZE = 16;
@@ -1039,9 +978,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/modes/GCMBlockCipher.
 +    private static final long MAX_INPUT_SIZE = 68719476704L;
 +    // END android-added
  
-     // not final due to a compiler bug
+     // not final due to a compiler bug 
      private BlockCipher   cipher;
-@@ -202,6 +207,14 @@
+@@ -194,6 +199,14 @@
          return totalData < macSize ? 0 : totalData - macSize;
      }
  
@@ -1056,7 +995,7 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/modes/GCMBlockCipher.
      public int getUpdateOutputSize(int len)
      {
          int totalData = len + bufOff;
-@@ -218,6 +231,11 @@
+@@ -210,6 +223,11 @@
  
      public void processAADByte(byte in)
      {
@@ -1068,7 +1007,7 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/modes/GCMBlockCipher.
          atBlock[atBlockPos] = in;
          if (++atBlockPos == BLOCK_SIZE)
          {
-@@ -230,6 +248,11 @@
+@@ -222,6 +240,11 @@
  
      public void processAADBytes(byte[] in, int inOff, int len)
      {
@@ -1080,7 +1019,7 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/modes/GCMBlockCipher.
          for (int i = 0; i < len; ++i)
          {
              atBlock[atBlockPos] = in[inOff + i];
-@@ -267,6 +290,11 @@
+@@ -259,6 +282,11 @@
      public int processByte(byte in, byte[] out, int outOff)
          throws DataLengthException
      {
@@ -1092,7 +1031,7 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/modes/GCMBlockCipher.
          bufBlock[bufOff] = in;
          if (++bufOff == bufBlock.length)
          {
-@@ -279,6 +307,11 @@
+@@ -271,6 +299,11 @@
      public int processBytes(byte[] in, int inOff, int len, byte[] out, int outOff)
          throws DataLengthException
      {
@@ -1101,12 +1040,12 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/modes/GCMBlockCipher.
 +            throw new DataLengthException("Input exceeded " + MAX_INPUT_SIZE + " bytes");
 +        }
 +        // END android-added
-         if (in.length < (inOff + len))
-         {
-             throw new DataLengthException("Input buffer too short");
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/signers/RSADigestSigner.java bcprov-jdk15on-152/org/bouncycastle/crypto/signers/RSADigestSigner.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/signers/RSADigestSigner.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/signers/RSADigestSigner.java	2015-04-09 13:10:16.000000000 +0000
+         int resultLen = 0;
+ 
+         for (int i = 0; i < len; ++i)
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/signers/RSADigestSigner.java bcprov-jdk15on-150/org/bouncycastle/crypto/signers/RSADigestSigner.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/signers/RSADigestSigner.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/signers/RSADigestSigner.java	2013-12-12 00:35:05.000000000 +0000
 @@ -39,9 +39,11 @@
       */
      static
@@ -1135,11 +1074,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/signers/RSADigestSign
          oidMap.put("MD5", PKCSObjectIdentifiers.md5);
      }
  
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/util/PrivateKeyFactory.java bcprov-jdk15on-152/org/bouncycastle/crypto/util/PrivateKeyFactory.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/util/PrivateKeyFactory.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/util/PrivateKeyFactory.java	2014-07-28 19:51:54.000000000 +0000
-@@ -9,7 +9,9 @@
- import org.bouncycastle.asn1.ASN1Integer;
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/util/PrivateKeyFactory.java bcprov-jdk15on-150/org/bouncycastle/crypto/util/PrivateKeyFactory.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/util/PrivateKeyFactory.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/util/PrivateKeyFactory.java	2013-12-12 00:35:05.000000000 +0000
+@@ -10,7 +10,9 @@
  import org.bouncycastle.asn1.ASN1ObjectIdentifier;
  import org.bouncycastle.asn1.ASN1Primitive;
 -import org.bouncycastle.asn1.oiw.ElGamalParameter;
@@ -1187,11 +1125,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/util/PrivateKeyFactor
          else if (algId.getAlgorithm().equals(X9ObjectIdentifiers.id_dsa))
          {
              ASN1Integer derX = (ASN1Integer)keyInfo.parsePrivateKey();
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/util/PublicKeyFactory.java bcprov-jdk15on-152/org/bouncycastle/crypto/util/PublicKeyFactory.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/crypto/util/PublicKeyFactory.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/crypto/util/PublicKeyFactory.java	2014-07-28 19:51:54.000000000 +0000
-@@ -11,7 +11,9 @@
- import org.bouncycastle.asn1.ASN1OctetString;
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/crypto/util/PublicKeyFactory.java bcprov-jdk15on-150/org/bouncycastle/crypto/util/PublicKeyFactory.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/crypto/util/PublicKeyFactory.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/crypto/util/PublicKeyFactory.java	2013-12-12 00:35:05.000000000 +0000
+@@ -12,7 +12,9 @@
  import org.bouncycastle.asn1.ASN1Primitive;
  import org.bouncycastle.asn1.DEROctetString;
 -import org.bouncycastle.asn1.oiw.ElGamalParameter;
@@ -1239,10 +1176,36 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/crypto/util/PublicKeyFactory
          else if (algId.getAlgorithm().equals(X9ObjectIdentifiers.id_dsa)
              || algId.getAlgorithm().equals(OIWObjectIdentifiers.dsaWithSHA1))
          {
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/DH.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/DH.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/DH.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/DH.java	2014-07-28 19:51:54.000000000 +0000
-@@ -35,10 +35,12 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/DH.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/DH.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/DH.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/DH.java	2014-05-08 00:26:23.000000000 +0000
+@@ -1,7 +1,14 @@
+ package org.bouncycastle.jcajce.provider.asymmetric;
+ 
++// BEGIN android-added
++import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
++import org.bouncycastle.jcajce.provider.asymmetric.dh.KeyFactorySpi;
++// END android-added
+ import org.bouncycastle.jcajce.provider.config.ConfigurableProvider;
+ import org.bouncycastle.jcajce.provider.util.AsymmetricAlgorithmProvider;
++// BEGIN android-added
++import org.bouncycastle.jcajce.provider.util.AsymmetricKeyInfoConverter;
++// END android-added
+ 
+ public class DH
+ {
+@@ -24,6 +31,10 @@
+ 
+             provider.addAlgorithm("KeyFactory.DH", PREFIX + "KeyFactorySpi");
+             provider.addAlgorithm("Alg.Alias.KeyFactory.DIFFIEHELLMAN", "DH");
++            // BEGIN android-added
++            AsymmetricKeyInfoConverter keyFact = new KeyFactorySpi();
++            registerOid(provider, PKCSObjectIdentifiers.dhKeyAgreement, "DH", keyFact);
++            // END android-added
+ 
+             provider.addAlgorithm("AlgorithmParameters.DH", PREFIX + "AlgorithmParametersSpi");
+             provider.addAlgorithm("Alg.Alias.AlgorithmParameters.DIFFIEHELLMAN", "DH");
+@@ -32,10 +43,12 @@
  
              provider.addAlgorithm("AlgorithmParameterGenerator.DH", PREFIX + "AlgorithmParameterGeneratorSpi");
              
@@ -1256,13 +1219,13 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/D
 +            // provider.addAlgorithm("Cipher.DHIESWITHAES", PREFIX + "IESCipher$IESwithAES");
 +            // provider.addAlgorithm("Cipher.DHIESWITHDESEDE", PREFIX + "IESCipher$IESwithDESede");
 +            // END android-removed
- 
-             registerOid(provider, PKCSObjectIdentifiers.dhKeyAgreement, "DH", new KeyFactorySpi());
-             registerOid(provider, X9ObjectIdentifiers.dhpublicnumber, "DH", new KeyFactorySpi());
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/DSA.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/DSA.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/DSA.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/DSA.java	2015-06-01 19:10:55.000000000 +0000
-@@ -27,40 +27,55 @@
+         }
+     }
+ }
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/DSA.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/DSA.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/DSA.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/DSA.java	2013-12-16 16:39:58.000000000 +0000
+@@ -27,40 +27,53 @@
              provider.addAlgorithm("KeyPairGenerator.DSA", PREFIX + "KeyPairGeneratorSpi");
              provider.addAlgorithm("KeyFactory.DSA", PREFIX + "KeyFactorySpi");
  
@@ -1340,10 +1303,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/D
  
                  registerOid(provider, DSAUtil.dsaOids[i], "DSA", keyFact);
                  registerOidAlgorithmParameters(provider, DSAUtil.dsaOids[i], "DSA");
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/EC.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/EC.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/EC.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/EC.java	2015-04-09 13:10:16.000000000 +0000
-@@ -1,8 +1,10 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/EC.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/EC.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/EC.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/EC.java	2013-12-12 00:35:05.000000000 +0000
+@@ -1,7 +1,9 @@
  package org.bouncycastle.jcajce.provider.asymmetric;
  
 -import org.bouncycastle.asn1.bsi.BSIObjectIdentifiers;
@@ -1519,9 +1482,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/E
          }
      }
  }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/RSA.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/RSA.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/RSA.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/RSA.java	2015-04-09 13:10:16.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/RSA.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/RSA.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/RSA.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/RSA.java	2013-09-26 18:06:21.000000000 +0000
 @@ -3,7 +3,9 @@
  import org.bouncycastle.asn1.ASN1ObjectIdentifier;
  import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
@@ -1863,9 +1826,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/R
          }
  
          private void addDigestSignature(
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/X509.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/X509.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/X509.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/X509.java	2012-09-17 23:04:47.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/X509.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/X509.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/X509.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/X509.java	2012-09-17 23:04:47.000000000 +0000
 @@ -18,8 +18,10 @@
  
          public void configure(ConfigurableProvider provider)
@@ -1879,9 +1842,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/X
  
              //
              // certificate factories.
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSASigner.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSASigner.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSASigner.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSASigner.java	2013-12-12 00:35:05.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSASigner.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSASigner.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSASigner.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSASigner.java	2013-12-12 00:35:05.000000000 +0000
 @@ -23,13 +23,20 @@
  import org.bouncycastle.crypto.DSA;
  import org.bouncycastle.crypto.Digest;
@@ -2075,23 +2038,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/d
  
      static public class noneDSA
          extends DSASigner
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSAUtil.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSAUtil.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSAUtil.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/dsa/DSAUtil.java	2015-06-01 19:10:55.000000000 +0000
-@@ -23,6 +23,9 @@
-     public static final ASN1ObjectIdentifier[] dsaOids =
-     {
-         X9ObjectIdentifiers.id_dsa,
-+        // BEGIN android-added
-+        X9ObjectIdentifiers.id_dsa_with_sha1,
-+        // END android-added
-         OIWObjectIdentifiers.dsaWithSHA1
-     };
- 
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyAgreementSpi.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyAgreementSpi.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyAgreementSpi.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyAgreementSpi.java	2014-07-28 19:51:54.000000000 +0000
-@@ -24,22 +24,28 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyAgreementSpi.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyAgreementSpi.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyAgreementSpi.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyAgreementSpi.java	2013-12-12 00:35:05.000000000 +0000
+@@ -23,21 +23,27 @@
  import org.bouncycastle.crypto.CipherParameters;
  import org.bouncycastle.crypto.DerivationFunction;
  import org.bouncycastle.crypto.agreement.ECDHBasicAgreement;
@@ -2403,9 +2353,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/e
 +    // }
 +    // END android-removed
  }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyFactorySpi.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyFactorySpi.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyFactorySpi.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyFactorySpi.java	2013-05-25 02:14:15.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyFactorySpi.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyFactorySpi.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyFactorySpi.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyFactorySpi.java	2013-05-25 02:14:15.000000000 +0000
 @@ -201,14 +201,16 @@
          }
      }
@@ -2431,21 +2381,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/e
  
      public static class ECDH
          extends KeyFactorySpi
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyPairGeneratorSpi.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyPairGeneratorSpi.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyPairGeneratorSpi.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyPairGeneratorSpi.java	2015-05-12 17:22:22.000000000 +0000
-@@ -42,7 +42,9 @@
-         ECKeyGenerationParameters   param;
-         ECKeyPairGenerator          engine = new ECKeyPairGenerator();
-         Object                      ecParams = null;
--        int                         strength = 239;
-+        // BEGIN android-changed
-+        int                         strength = 256;
-+        // BEGIN android-changed
-         int                         certainty = 50;
-         SecureRandom                random = new SecureRandom();
-         boolean                     initialised = false;
-@@ -84,7 +86,13 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyPairGeneratorSpi.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyPairGeneratorSpi.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyPairGeneratorSpi.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/ec/KeyPairGeneratorSpi.java	2013-12-12 00:35:05.000000000 +0000
+@@ -84,7 +84,13 @@
              SecureRandom    random)
          {
              this.strength = strength;
@@ -2470,17 +2409,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/e
 +            // END android-added
              if (params == null)
              {
-                 ECParameterSpec implicitCA = configuration.getEcImplicitlyCa();
-@@ -267,4 +280,4 @@
-             super("ECMQV", BouncyCastleProvider.CONFIGURATION);
-         }
-     }
--}
-\ No newline at end of file
-+}
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/SignatureSpi.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/ec/SignatureSpi.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/SignatureSpi.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/ec/SignatureSpi.java	2014-07-28 19:51:54.000000000 +0000
+                 ECParameterSpec p = (ECParameterSpec)params;
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/SignatureSpi.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/ec/SignatureSpi.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/ec/SignatureSpi.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/ec/SignatureSpi.java	2013-12-12 00:35:05.000000000 +0000
 @@ -16,16 +16,23 @@
  import org.bouncycastle.crypto.DSA;
  import org.bouncycastle.crypto.Digest;
@@ -2892,139 +2824,12 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/e
 @@ -302,66 +329,68 @@
          }
      }
- 
--    private static class PlainDSAEncoder
--        implements DSAEncoder
--    {
--        public byte[] encode(
--            BigInteger r,
--            BigInteger s)
--            throws IOException
--        {
--            byte[] first = makeUnsigned(r);
--            byte[] second = makeUnsigned(s);
--            byte[] res;
--
--            if (first.length > second.length)
--            {
--                res = new byte[first.length * 2];
--            }
--            else
--            {
--                res = new byte[second.length * 2];
--            }
--
--            System.arraycopy(first, 0, res, res.length / 2 - first.length, first.length);
--            System.arraycopy(second, 0, res, res.length - second.length, second.length);
--
--            return res;
--        }
--
--
--        private byte[] makeUnsigned(BigInteger val)
--        {
--            byte[] res = val.toByteArray();
--
--            if (res[0] == 0)
--            {
--                byte[] tmp = new byte[res.length - 1];
--
--                System.arraycopy(res, 1, tmp, 0, tmp.length);
--
--                return tmp;
--            }
--
--            return res;
--        }
--
--        public BigInteger[] decode(
--            byte[] encoding)
--            throws IOException
--        {
--            BigInteger[] sig = new BigInteger[2];
--
--            byte[] first = new byte[encoding.length / 2];
--            byte[] second = new byte[encoding.length / 2];
--
--            System.arraycopy(encoding, 0, first, 0, first.length);
--            System.arraycopy(encoding, first.length, second, 0, second.length);
--
--            sig[0] = new BigInteger(1, first);
--            sig[1] = new BigInteger(1, second);
--
--            return sig;
--        }
--    }
 -}
 \ No newline at end of file
-+    // BEGIN android-removed
-+    // private static class PlainDSAEncoder
-+    //     implements DSAEncoder
-+    // {
-+    //     public byte[] encode(
-+    //         BigInteger r,
-+    //         BigInteger s)
-+    //         throws IOException
-+    //     {
-+    //         byte[] first = makeUnsigned(r);
-+    //         byte[] second = makeUnsigned(s);
-+    //         byte[] res;
-+    //
-+    //         if (first.length > second.length)
-+    //         {
-+    //             res = new byte[first.length * 2];
-+    //         }
-+    //         else
-+    //         {
-+    //             res = new byte[second.length * 2];
-+    //         }
-+    //
-+    //         System.arraycopy(first, 0, res, res.length / 2 - first.length, first.length);
-+    //         System.arraycopy(second, 0, res, res.length - second.length, second.length);
-+    //
-+    //         return res;
-+    //     }
-+    //
-+    //
-+    //     private byte[] makeUnsigned(BigInteger val)
-+    //     {
-+    //         byte[] res = val.toByteArray();
-+    //
-+    //         if (res[0] == 0)
-+    //         {
-+    //             byte[] tmp = new byte[res.length - 1];
-+    //
-+    //             System.arraycopy(res, 1, tmp, 0, tmp.length);
-+    //
-+    //             return tmp;
-+    //         }
-+    //
-+    //         return res;
-+    //     }
-+    //
-+    //     public BigInteger[] decode(
-+    //         byte[] encoding)
-+    //         throws IOException
-+    //     {
-+    //         BigInteger[] sig = new BigInteger[2];
-+    //
-+    //         byte[] first = new byte[encoding.length / 2];
-+    //         byte[] second = new byte[encoding.length / 2];
-+    //
-+    //         System.arraycopy(encoding, 0, first, 0, first.length);
-+    //         System.arraycopy(encoding, first.length, second, 0, second.length);
-+    //
-+    //         sig[0] = new BigInteger(1, first);
-+    //         sig[1] = new BigInteger(1, second);
-+    //
-+    //         return sig;
-+    //     }
-+    // }
-+    // END android-removed
 +}
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/rsa/CipherSpi.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/rsa/CipherSpi.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/rsa/CipherSpi.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/rsa/CipherSpi.java	2015-04-09 13:10:16.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/rsa/CipherSpi.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/rsa/CipherSpi.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/rsa/CipherSpi.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/rsa/CipherSpi.java	2013-09-26 18:06:21.000000000 +0000
 @@ -26,7 +26,9 @@
  import org.bouncycastle.crypto.CipherParameters;
  import org.bouncycastle.crypto.Digest;
@@ -3148,9 +2953,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/r
 +    // }
 +    // END android-removed
  }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/rsa/DigestSignatureSpi.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/rsa/DigestSignatureSpi.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/rsa/DigestSignatureSpi.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/rsa/DigestSignatureSpi.java	2015-04-09 13:10:16.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/rsa/DigestSignatureSpi.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/rsa/DigestSignatureSpi.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/rsa/DigestSignatureSpi.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/rsa/DigestSignatureSpi.java	2013-09-26 18:06:21.000000000 +0000
 @@ -17,24 +17,31 @@
  import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
  import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
@@ -3373,9 +3178,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/r
 +    // }
 +    // END android-removed
  }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/util/BaseCipherSpi.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/util/BaseCipherSpi.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/util/BaseCipherSpi.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/util/BaseCipherSpi.java	2015-04-09 13:10:16.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/util/BaseCipherSpi.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/util/BaseCipherSpi.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/util/BaseCipherSpi.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/util/BaseCipherSpi.java	2012-09-17 23:04:47.000000000 +0000
 @@ -18,8 +18,10 @@
  import javax.crypto.NoSuchPaddingException;
  import javax.crypto.spec.IvParameterSpec;
@@ -3401,11 +3206,11 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/u
 +                                        // END android-removed
                                      };
  
-     private final JcaJceHelper helper = new BCJcaJceHelper();
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/util/ECUtil.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/util/ECUtil.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/util/ECUtil.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/util/ECUtil.java	2015-04-09 13:10:16.000000000 +0000
-@@ -6,11 +6,15 @@
+ 
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/util/ECUtil.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/util/ECUtil.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/util/ECUtil.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/util/ECUtil.java	2013-05-25 02:14:15.000000000 +0000
+@@ -5,11 +5,15 @@
  import java.security.PublicKey;
  
  import org.bouncycastle.asn1.ASN1ObjectIdentifier;
@@ -3490,12 +3295,12 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/u
          }
  
          return name;
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/PKIXCertPath.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/x509/PKIXCertPath.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/PKIXCertPath.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/x509/PKIXCertPath.java	2015-04-09 13:10:16.000000000 +0000
-@@ -37,7 +37,9 @@
- import org.bouncycastle.jcajce.util.BCJcaJceHelper;
- import org.bouncycastle.jcajce.util.JcaJceHelper;
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/PKIXCertPath.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/x509/PKIXCertPath.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/PKIXCertPath.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/x509/PKIXCertPath.java	2013-02-21 00:01:31.000000000 +0000
+@@ -36,7 +36,9 @@
+ import org.bouncycastle.asn1.pkcs.SignedData;
+ import org.bouncycastle.jce.provider.BouncyCastleProvider;
  import org.bouncycastle.util.io.pem.PemObject;
 -import org.bouncycastle.util.io.pem.PemWriter;
 +// BEGIN android-removed
@@ -3566,10 +3371,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/x
          else
          {
              throw new CertificateEncodingException("unsupported encoding: " + encoding);
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/X509CertificateObject.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/x509/X509CertificateObject.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/X509CertificateObject.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/x509/X509CertificateObject.java	2015-04-09 13:10:16.000000000 +0000
-@@ -55,6 +55,9 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/X509CertificateObject.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/x509/X509CertificateObject.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/X509CertificateObject.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/x509/X509CertificateObject.java	2013-05-25 02:14:15.000000000 +0000
+@@ -57,6 +57,9 @@
  import org.bouncycastle.asn1.x509.Extensions;
  import org.bouncycastle.asn1.x509.GeneralName;
  import org.bouncycastle.asn1.x509.KeyUsage;
@@ -3612,11 +3417,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/x
                      break;
                  case GeneralName.dNSName:
                  case GeneralName.rfc822Name:
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/X509SignatureUtil.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/x509/X509SignatureUtil.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/X509SignatureUtil.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/asymmetric/x509/X509SignatureUtil.java	2015-04-09 13:10:16.000000000 +0000
-@@ -16,12 +16,16 @@
- import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/X509SignatureUtil.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/x509/X509SignatureUtil.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/asymmetric/x509/X509SignatureUtil.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/asymmetric/x509/X509SignatureUtil.java	2013-05-25 02:14:15.000000000 +0000
+@@ -14,12 +14,16 @@
  import org.bouncycastle.asn1.ASN1Sequence;
  import org.bouncycastle.asn1.DERNull;
 -import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
@@ -3675,9 +3479,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/asymmetric/x
          else
          {
              return digestAlgOID.getId();            
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/digest/SHA256.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/digest/SHA256.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/digest/SHA256.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/digest/SHA256.java	2013-05-25 02:14:15.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/digest/SHA256.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/digest/SHA256.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/digest/SHA256.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/digest/SHA256.java	2013-05-25 02:14:15.000000000 +0000
 @@ -45,17 +45,19 @@
          }
      }
@@ -3724,9 +3528,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/digest/SHA25
  
              addHMACAlgorithm(provider, "SHA256", PREFIX + "$HashMac",  PREFIX + "$KeyGenerator");
              addHMACAlias(provider, "SHA256", PKCSObjectIdentifiers.id_hmacWithSHA256);
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/digest/SHA384.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/digest/SHA384.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/digest/SHA384.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/digest/SHA384.java	2013-05-25 02:14:15.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/digest/SHA384.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/digest/SHA384.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/digest/SHA384.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/digest/SHA384.java	2013-05-25 02:14:15.000000000 +0000
 @@ -5,7 +5,9 @@
  import org.bouncycastle.crypto.CipherKeyGenerator;
  import org.bouncycastle.crypto.digests.SHA384Digest;
@@ -3774,9 +3578,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/digest/SHA38
  
              addHMACAlgorithm(provider, "SHA384", PREFIX + "$HashMac",  PREFIX + "$KeyGenerator");
              addHMACAlias(provider, "SHA384", PKCSObjectIdentifiers.id_hmacWithSHA384);
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/digest/SHA512.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/digest/SHA512.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/digest/SHA512.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/digest/SHA512.java	2013-05-25 02:14:15.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/digest/SHA512.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/digest/SHA512.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/digest/SHA512.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/digest/SHA512.java	2013-05-25 02:14:15.000000000 +0000
 @@ -4,9 +4,13 @@
  import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
  import org.bouncycastle.crypto.CipherKeyGenerator;
@@ -4021,9 +3825,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/digest/SHA51
          }
      }
  
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/keystore/BC.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/keystore/BC.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/keystore/BC.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/keystore/BC.java	2013-05-25 02:14:15.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/keystore/BC.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/keystore/BC.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/keystore/BC.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/keystore/BC.java	2013-05-25 02:14:15.000000000 +0000
 @@ -17,7 +17,9 @@
          public void configure(ConfigurableProvider provider)
          {
@@ -4035,9 +3839,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/keystore/BC.
              provider.addAlgorithm("KeyStore.BouncyCastle", PREFIX + "BcKeyStoreSpi$BouncyCastleStore");
              provider.addAlgorithm("Alg.Alias.KeyStore.UBER", "BouncyCastle");
              provider.addAlgorithm("Alg.Alias.KeyStore.BOUNCYCASTLE", "BouncyCastle");
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/keystore/PKCS12.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/keystore/PKCS12.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/keystore/PKCS12.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/keystore/PKCS12.java	2013-05-25 02:14:15.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/keystore/PKCS12.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/keystore/PKCS12.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/keystore/PKCS12.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/keystore/PKCS12.java	2013-05-25 02:14:15.000000000 +0000
 @@ -17,14 +17,16 @@
          public void configure(ConfigurableProvider provider)
          {
@@ -4063,10 +3867,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/keystore/PKC
          }
      }
  }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi.java	2015-04-09 13:10:16.000000000 +0000
-@@ -62,8 +62,10 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi.java	2013-12-12 00:35:05.000000000 +0000
+@@ -61,8 +61,10 @@
  import org.bouncycastle.asn1.DEROutputStream;
  import org.bouncycastle.asn1.DERSequence;
  import org.bouncycastle.asn1.DERSet;
@@ -4186,10 +3990,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/keystore/pkc
  
              KEY_SIZES = Collections.unmodifiableMap(keySizes);
          }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/AES.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/AES.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/AES.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/AES.java	2015-07-22 00:42:46.000000000 +0000
-@@ -3,16 +3,28 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/AES.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/AES.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/AES.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/AES.java	2013-12-12 00:35:05.000000000 +0000
+@@ -3,13 +3,17 @@
  import java.io.IOException;
  import java.lang.reflect.Constructor;
  import java.lang.reflect.Method;
@@ -5067,9 +4871,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/AE
          }
      }
  
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/ARC4.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/ARC4.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/ARC4.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/ARC4.java	2013-05-25 02:14:15.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/ARC4.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/ARC4.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/ARC4.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/ARC4.java	2013-05-25 02:14:15.000000000 +0000
 @@ -29,7 +29,9 @@
      {
          public KeyGen()
@@ -5081,9 +4885,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/AR
          }
      }
  
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/Blowfish.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/Blowfish.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/Blowfish.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/Blowfish.java	2012-09-17 23:04:47.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/Blowfish.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/Blowfish.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/Blowfish.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/Blowfish.java	2012-09-17 23:04:47.000000000 +0000
 @@ -64,7 +64,9 @@
          {
  
@@ -5095,9 +4899,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/Bl
              provider.addAlgorithm("KeyGenerator.BLOWFISH", PREFIX + "$KeyGen");
              provider.addAlgorithm("Alg.Alias.KeyGenerator.1.3.6.1.4.1.3029.1.2", "BLOWFISH");
              provider.addAlgorithm("AlgorithmParameters.BLOWFISH", PREFIX + "$AlgParams");
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/DES.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/DES.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/DES.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/DES.java	2015-04-09 13:10:16.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/DES.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/DES.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/DES.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/DES.java	2013-05-25 02:14:15.000000000 +0000
 @@ -19,12 +19,16 @@
  import org.bouncycastle.crypto.CipherParameters;
  import org.bouncycastle.crypto.KeyGenerationParameters;
@@ -5414,9 +5218,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/DE
              provider.addAlgorithm("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithMD5AndDES_CBC, "PBEWITHMD5ANDDES");
              provider.addAlgorithm("Alg.Alias.SecretKeyFactory." + PKCSObjectIdentifiers.pbeWithSHA1AndDES_CBC, "PBEWITHSHA1ANDDES");
          }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/DESede.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/DESede.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/DESede.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/DESede.java	2015-04-09 13:10:16.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/DESede.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/DESede.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/DESede.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/DESede.java	2013-05-25 02:14:15.000000000 +0000
 @@ -1,30 +1,42 @@
  package org.bouncycastle.jcajce.provider.symmetric;
  
@@ -5737,10 +5541,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/DE
  
              provider.addAlgorithm("SecretKeyFactory.PBEWITHSHAAND3-KEYTRIPLEDES-CBC", PREFIX + "$PBEWithSHAAndDES3KeyFactory");
              provider.addAlgorithm("SecretKeyFactory.PBEWITHSHAAND2-KEYTRIPLEDES-CBC", PREFIX + "$PBEWithSHAAndDES2KeyFactory");
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/RC2.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/RC2.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/RC2.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/RC2.java	2015-04-09 13:10:16.000000000 +0000
-@@ -12,20 +12,28 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/RC2.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/RC2.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/RC2.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/RC2.java	2013-05-25 02:14:15.000000000 +0000
+@@ -12,24 +12,34 @@
  
  import org.bouncycastle.asn1.ASN1Primitive;
  import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
@@ -6495,9 +6299,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/RC
  
              provider.addAlgorithm("Alg.Alias.Cipher." + PKCSObjectIdentifiers.pbeWithMD5AndRC2_CBC, "PBEWITHMD5ANDRC2");
  
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/SymmetricAlgorithmProvider.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/SymmetricAlgorithmProvider.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/SymmetricAlgorithmProvider.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/SymmetricAlgorithmProvider.java	2013-12-12 00:35:05.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/SymmetricAlgorithmProvider.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/SymmetricAlgorithmProvider.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/SymmetricAlgorithmProvider.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/SymmetricAlgorithmProvider.java	2013-12-12 00:35:05.000000000 +0000
 @@ -6,29 +6,31 @@
  abstract class SymmetricAlgorithmProvider
      extends AlgorithmProvider
@@ -6554,9 +6358,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/Sy
 +    // END android-removed
  
  }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/Twofish.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/Twofish.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/Twofish.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/Twofish.java	2013-12-12 00:35:05.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/Twofish.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/Twofish.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/Twofish.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/Twofish.java	2013-12-12 00:35:05.000000000 +0000
 @@ -1,18 +1,26 @@
  package org.bouncycastle.jcajce.provider.symmetric;
  
@@ -6754,10 +6558,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/Tw
          }
      }
  }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseBlockCipher.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/util/BaseBlockCipher.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseBlockCipher.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/util/BaseBlockCipher.java	2015-04-09 13:10:16.000000000 +0000
-@@ -20,8 +20,10 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseBlockCipher.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/util/BaseBlockCipher.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseBlockCipher.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/util/BaseBlockCipher.java	2013-12-13 23:56:53.000000000 +0000
+@@ -19,8 +19,10 @@
  import javax.crypto.ShortBufferException;
  import javax.crypto.spec.IvParameterSpec;
  import javax.crypto.spec.PBEParameterSpec;
@@ -7181,9 +6985,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/ut
      }
  
      /*
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseMac.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/util/BaseMac.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseMac.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/util/BaseMac.java	2013-12-12 00:35:05.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseMac.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/util/BaseMac.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseMac.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/util/BaseMac.java	2013-12-12 00:35:05.000000000 +0000
 @@ -16,8 +16,10 @@
  import org.bouncycastle.crypto.Mac;
  import org.bouncycastle.crypto.params.KeyParameter;
@@ -7214,10 +7018,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/ut
          else if (params == null)
          {
              param = new KeyParameter(key.getEncoded());
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseStreamCipher.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/util/BaseStreamCipher.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseStreamCipher.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/util/BaseStreamCipher.java	2015-04-09 13:10:16.000000000 +0000
-@@ -15,8 +15,10 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseStreamCipher.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/util/BaseStreamCipher.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseStreamCipher.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/util/BaseStreamCipher.java	2013-12-12 00:35:05.000000000 +0000
+@@ -14,8 +14,10 @@
  import javax.crypto.ShortBufferException;
  import javax.crypto.spec.IvParameterSpec;
  import javax.crypto.spec.PBEParameterSpec;
@@ -7243,10 +7047,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/ut
                                          IvParameterSpec.class,
                                          PBEParameterSpec.class
                                      };
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseWrapCipher.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/util/BaseWrapCipher.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseWrapCipher.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/util/BaseWrapCipher.java	2015-04-09 13:10:16.000000000 +0000
-@@ -24,8 +24,10 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseWrapCipher.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/util/BaseWrapCipher.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/util/BaseWrapCipher.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/util/BaseWrapCipher.java	2013-01-31 02:26:40.000000000 +0000
+@@ -22,8 +22,10 @@
  import javax.crypto.ShortBufferException;
  import javax.crypto.spec.IvParameterSpec;
  import javax.crypto.spec.PBEParameterSpec;
@@ -7289,9 +7093,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/ut
  
      protected byte[] engineWrap(
          Key     key)
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/util/PBE.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/util/PBE.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/util/PBE.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/symmetric/util/PBE.java	2013-12-12 00:35:05.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/util/PBE.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/util/PBE.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/symmetric/util/PBE.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/symmetric/util/PBE.java	2013-12-12 00:35:05.000000000 +0000
 @@ -7,13 +7,18 @@
  
  import org.bouncycastle.crypto.CipherParameters;
@@ -7478,9 +7282,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/symmetric/ut
                  default:
                      throw new IllegalStateException("unknown digest scheme for PBE encryption.");
                  }
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/util/DigestFactory.java bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/util/DigestFactory.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/util/DigestFactory.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/provider/util/DigestFactory.java	2013-09-26 18:06:21.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/util/DigestFactory.java bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/util/DigestFactory.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jcajce/provider/util/DigestFactory.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jcajce/provider/util/DigestFactory.java	2013-09-26 18:06:21.000000000 +0000
 @@ -10,12 +10,17 @@
  import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
  import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
@@ -7551,71 +7355,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/provider/util/DigestF
          }
          
          return null;
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/util/JcaJceUtils.java bcprov-jdk15on-152/org/bouncycastle/jcajce/util/JcaJceUtils.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jcajce/util/JcaJceUtils.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jcajce/util/JcaJceUtils.java	2014-07-28 19:51:54.000000000 +0000
-@@ -6,11 +6,15 @@
- import org.bouncycastle.asn1.ASN1Encodable;
- import org.bouncycastle.asn1.ASN1ObjectIdentifier;
- import org.bouncycastle.asn1.ASN1Primitive;
--import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-+// BEGIN android-removed
-+// import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
-+// END android-removed
- import org.bouncycastle.asn1.nist.NISTObjectIdentifiers;
- import org.bouncycastle.asn1.oiw.OIWObjectIdentifiers;
- import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
--import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
-+// BEGIN android-removed
-+// import org.bouncycastle.asn1.teletrust.TeleTrusTObjectIdentifiers;
-+// END android-removed
- 
- /**
-  * General JCA/JCE utility methods.
-@@ -100,22 +104,24 @@
-         {
-             return "SHA512";
-         }
--        else if (TeleTrusTObjectIdentifiers.ripemd128.equals(digestAlgOID))
--        {
--            return "RIPEMD128";
--        }
--        else if (TeleTrusTObjectIdentifiers.ripemd160.equals(digestAlgOID))
--        {
--            return "RIPEMD160";
--        }
--        else if (TeleTrusTObjectIdentifiers.ripemd256.equals(digestAlgOID))
--        {
--            return "RIPEMD256";
--        }
--        else if (CryptoProObjectIdentifiers.gostR3411.equals(digestAlgOID))
--        {
--            return "GOST3411";
--        }
-+        // BEGIN android-removed
-+        // else if (TeleTrusTObjectIdentifiers.ripemd128.equals(digestAlgOID))
-+        // {
-+        //     return "RIPEMD128";
-+        // }
-+        // else if (TeleTrusTObjectIdentifiers.ripemd160.equals(digestAlgOID))
-+        // {
-+        //     return "RIPEMD160";
-+        // }
-+        // else if (TeleTrusTObjectIdentifiers.ripemd256.equals(digestAlgOID))
-+        // {
-+        //     return "RIPEMD256";
-+        // }
-+        // else if (CryptoProObjectIdentifiers.gostR3411.equals(digestAlgOID))
-+        // {
-+        //     return "GOST3411";
-+        // }
-+        // END android-removed
-         else
-         {
-             return digestAlgOID.getId();
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/PKCS10CertificationRequest.java bcprov-jdk15on-152/org/bouncycastle/jce/PKCS10CertificationRequest.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jce/PKCS10CertificationRequest.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jce/PKCS10CertificationRequest.java	2014-07-28 19:51:54.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jce/PKCS10CertificationRequest.java bcprov-jdk15on-150/org/bouncycastle/jce/PKCS10CertificationRequest.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jce/PKCS10CertificationRequest.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jce/PKCS10CertificationRequest.java	2013-09-26 18:06:21.000000000 +0000
 @@ -30,14 +30,18 @@
  import org.bouncycastle.asn1.ASN1Set;
  import org.bouncycastle.asn1.DERBitString;
@@ -7764,9 +7506,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/PKCS10CertificationReque
          else
          {
              return digestAlgOID.getId();            
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/BouncyCastleProvider.java bcprov-jdk15on-152/org/bouncycastle/jce/provider/BouncyCastleProvider.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/BouncyCastleProvider.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jce/provider/BouncyCastleProvider.java	2015-04-09 13:10:16.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/BouncyCastleProvider.java bcprov-jdk15on-150/org/bouncycastle/jce/provider/BouncyCastleProvider.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/BouncyCastleProvider.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jce/provider/BouncyCastleProvider.java	2013-12-12 00:35:05.000000000 +0000
 @@ -64,15 +64,22 @@
  
      private static final String[] SYMMETRIC_MACS =
@@ -7926,10 +7668,10 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/BouncyCastlePro
      }
  
      private void loadAlgorithms(String packageName, String[] names)
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/CertBlacklist.java bcprov-jdk15on-152/org/bouncycastle/jce/provider/CertBlacklist.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/CertBlacklist.java	1970-01-01 00:00:00.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jce/provider/CertBlacklist.java	2015-06-10 22:51:41.000000000 +0000
-@@ -0,0 +1,233 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/CertBlacklist.java bcprov-jdk15on-150/org/bouncycastle/jce/provider/CertBlacklist.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/CertBlacklist.java	1970-01-01 00:00:00.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jce/provider/CertBlacklist.java	2014-05-05 17:28:58.000000000 +0000
+@@ -0,0 +1,228 @@
 +/*
 + * Copyright (C) 2012 The Android Open Source Project
 + *
@@ -8163,19 +7905,20 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/CertBlacklist.j
 +    }
 +
 +}
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/CertPathValidatorUtilities.java bcprov-jdk15on-152/org/bouncycastle/jce/provider/CertPathValidatorUtilities.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/CertPathValidatorUtilities.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jce/provider/CertPathValidatorUtilities.java	2015-04-09 13:10:16.000000000 +0000
-@@ -35,6 +35,7 @@
- import java.util.List;
- import java.util.Map;
- import java.util.Set;
-+import javax.security.auth.x500.X500Principal;
- 
- import org.bouncycastle.asn1.ASN1Encodable;
- import org.bouncycastle.asn1.ASN1Enumerated;
-@@ -73,7 +74,9 @@
- import org.bouncycastle.util.Store;
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/CertPathValidatorUtilities.java bcprov-jdk15on-150/org/bouncycastle/jce/provider/CertPathValidatorUtilities.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/CertPathValidatorUtilities.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jce/provider/CertPathValidatorUtilities.java	2013-12-12 00:35:05.000000000 +0000
+@@ -61,18 +61,24 @@
+ import org.bouncycastle.asn1.x509.PolicyInformation;
+ import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+ import org.bouncycastle.asn1.x509.X509Extension;
+-import org.bouncycastle.jce.X509LDAPCertStoreParameters;
++// BEGIN android-removed
++// import org.bouncycastle.jce.X509LDAPCertStoreParameters;
++// END android-removed
+ import org.bouncycastle.jce.exception.ExtCertPathValidatorException;
+ import org.bouncycastle.util.Integers;
+ import org.bouncycastle.util.Selector;
  import org.bouncycastle.util.StoreException;
  import org.bouncycastle.x509.X509AttributeCertificate;
 -import org.bouncycastle.x509.extension.X509ExtensionUtil;
@@ -8259,14 +8002,13 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/CertPathValidat
 +            }
 +            // END android-added
  
-             if (certIssuer == null)
-             {
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/JCEECPrivateKey.java bcprov-jdk15on-152/org/bouncycastle/jce/provider/JCEECPrivateKey.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/JCEECPrivateKey.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jce/provider/JCEECPrivateKey.java	2014-07-28 19:51:54.000000000 +0000
-@@ -19,8 +19,10 @@
- import org.bouncycastle.asn1.ASN1Sequence;
- import org.bouncycastle.asn1.DERBitString;
+     protected static void addAdditionalStoresFromCRLDistributionPoint(
+         CRLDistPoint crldp, ExtendedPKIXParameters pkixParams)
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/JCEECPrivateKey.java bcprov-jdk15on-150/org/bouncycastle/jce/provider/JCEECPrivateKey.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/JCEECPrivateKey.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jce/provider/JCEECPrivateKey.java	2013-12-12 00:35:05.000000000 +0000
+@@ -20,8 +20,10 @@
+ import org.bouncycastle.asn1.DERInteger;
  import org.bouncycastle.asn1.DERNull;
 -import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
 -import org.bouncycastle.asn1.cryptopro.ECGOST3410NamedCurves;
@@ -8335,9 +8077,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/JCEECPrivateKey
              {
  
                  info = new PrivateKeyInfo(new AlgorithmIdentifier(X9ObjectIdentifiers.id_ecPublicKey, params.toASN1Primitive()), keyStructure.toASN1Primitive());
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/JCEECPublicKey.java bcprov-jdk15on-152/org/bouncycastle/jce/provider/JCEECPublicKey.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/JCEECPublicKey.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jce/provider/JCEECPublicKey.java	2014-07-28 19:51:54.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/JCEECPublicKey.java bcprov-jdk15on-150/org/bouncycastle/jce/provider/JCEECPublicKey.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/JCEECPublicKey.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jce/provider/JCEECPublicKey.java	2013-12-12 00:35:05.000000000 +0000
 @@ -18,9 +18,11 @@
  import org.bouncycastle.asn1.DERBitString;
  import org.bouncycastle.asn1.DERNull;
@@ -8596,10 +8338,317 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/JCEECPublicKey.
          {
              if (ecSpec instanceof ECNamedCurveSpec)
              {
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/PKIXCRLUtil.java bcprov-jdk15on-152/org/bouncycastle/jce/provider/PKIXCRLUtil.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/PKIXCRLUtil.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jce/provider/PKIXCRLUtil.java	2015-04-09 13:10:16.000000000 +0000
-@@ -88,22 +88,24 @@
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/JCEStreamCipher.java bcprov-jdk15on-150/org/bouncycastle/jce/provider/JCEStreamCipher.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/JCEStreamCipher.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jce/provider/JCEStreamCipher.java	2013-05-25 02:14:15.000000000 +0000
+@@ -23,8 +23,10 @@
+ import javax.crypto.ShortBufferException;
+ import javax.crypto.spec.IvParameterSpec;
+ import javax.crypto.spec.PBEParameterSpec;
+-import javax.crypto.spec.RC2ParameterSpec;
+-import javax.crypto.spec.RC5ParameterSpec;
++// BEGIN android-removed
++// import javax.crypto.spec.RC2ParameterSpec;
++// import javax.crypto.spec.RC5ParameterSpec;
++// END android-removed
+ import javax.crypto.spec.SecretKeySpec;
+ 
+ import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+@@ -33,12 +35,16 @@
+ import org.bouncycastle.crypto.DataLengthException;
+ import org.bouncycastle.crypto.StreamBlockCipher;
+ import org.bouncycastle.crypto.StreamCipher;
+-import org.bouncycastle.crypto.engines.BlowfishEngine;
+-import org.bouncycastle.crypto.engines.DESEngine;
+-import org.bouncycastle.crypto.engines.DESedeEngine;
++// BEGIN android-removed
++// import org.bouncycastle.crypto.engines.BlowfishEngine;
++// import org.bouncycastle.crypto.engines.DESEngine;
++// import org.bouncycastle.crypto.engines.DESedeEngine;
++// END android-removed
+ import org.bouncycastle.crypto.engines.RC4Engine;
+-import org.bouncycastle.crypto.engines.SkipjackEngine;
+-import org.bouncycastle.crypto.engines.TwofishEngine;
++// BEGIN android-removed
++// import org.bouncycastle.crypto.engines.SkipjackEngine;
++// import org.bouncycastle.crypto.engines.TwofishEngine;
++// END android-removed
+ import org.bouncycastle.crypto.modes.CFBBlockCipher;
+ import org.bouncycastle.crypto.modes.OFBBlockCipher;
+ import org.bouncycastle.crypto.params.KeyParameter;
+@@ -55,8 +61,10 @@
+     //
+     private Class[]                 availableSpecs =
+                                     {
+-                                        RC2ParameterSpec.class,
+-                                        RC5ParameterSpec.class,
++                                        // BEGIN android-removed
++                                        // RC2ParameterSpec.class,
++                                        // RC5ParameterSpec.class,
++                                        // END android-removed
+                                         IvParameterSpec.class,
+                                         PBEParameterSpec.class
+                                     };
+@@ -491,123 +499,125 @@
+      * The ciphers that inherit from us.
+      */
+ 
+-    /**
+-     * DES
+-     */
+-    static public class DES_CFB8
+-        extends JCEStreamCipher
+-    {
+-        public DES_CFB8()
+-        {
+-            super(new CFBBlockCipher(new DESEngine(), 8), 64);
+-        }
+-    }
+-
+-    /**
+-     * DESede
+-     */
+-    static public class DESede_CFB8
+-        extends JCEStreamCipher
+-    {
+-        public DESede_CFB8()
+-        {
+-            super(new CFBBlockCipher(new DESedeEngine(), 8), 64);
+-        }
+-    }
+-
+-    /**
+-     * SKIPJACK
+-     */
+-    static public class Skipjack_CFB8
+-        extends JCEStreamCipher
+-    {
+-        public Skipjack_CFB8()
+-        {
+-            super(new CFBBlockCipher(new SkipjackEngine(), 8), 64);
+-        }
+-    }
+-
+-    /**
+-     * Blowfish
+-     */
+-    static public class Blowfish_CFB8
+-        extends JCEStreamCipher
+-    {
+-        public Blowfish_CFB8()
+-        {
+-            super(new CFBBlockCipher(new BlowfishEngine(), 8), 64);
+-        }
+-    }
+-
+-    /**
+-     * Twofish
+-     */
+-    static public class Twofish_CFB8
+-        extends JCEStreamCipher
+-    {
+-        public Twofish_CFB8()
+-        {
+-            super(new CFBBlockCipher(new TwofishEngine(), 8), 128);
+-        }
+-    }
+-
+-    /**
+-     * DES
+-     */
+-    static public class DES_OFB8
+-        extends JCEStreamCipher
+-    {
+-        public DES_OFB8()
+-        {
+-            super(new OFBBlockCipher(new DESEngine(), 8), 64);
+-        }
+-    }
+-
+-    /**
+-     * DESede
+-     */
+-    static public class DESede_OFB8
+-        extends JCEStreamCipher
+-    {
+-        public DESede_OFB8()
+-        {
+-            super(new OFBBlockCipher(new DESedeEngine(), 8), 64);
+-        }
+-    }
+-
+-    /**
+-     * SKIPJACK
+-     */
+-    static public class Skipjack_OFB8
+-        extends JCEStreamCipher
+-    {
+-        public Skipjack_OFB8()
+-        {
+-            super(new OFBBlockCipher(new SkipjackEngine(), 8), 64);
+-        }
+-    }
+-
+-    /**
+-     * Blowfish
+-     */
+-    static public class Blowfish_OFB8
+-        extends JCEStreamCipher
+-    {
+-        public Blowfish_OFB8()
+-        {
+-            super(new OFBBlockCipher(new BlowfishEngine(), 8), 64);
+-        }
+-    }
+-
+-    /**
+-     * Twofish
+-     */
+-    static public class Twofish_OFB8
+-        extends JCEStreamCipher
+-    {
+-        public Twofish_OFB8()
+-        {
+-            super(new OFBBlockCipher(new TwofishEngine(), 8), 128);
+-        }
+-    }
++    // BEGIN android-removed
++    // /**
++    //  * DES
++    //  */
++    // static public class DES_CFB8
++    //     extends JCEStreamCipher
++    // {
++    //     public DES_CFB8()
++    //     {
++    //         super(new CFBBlockCipher(new DESEngine(), 8), 64);
++    //     }
++    // }
++    //
++    // /**
++    //  * DESede
++    //  */
++    // static public class DESede_CFB8
++    //     extends JCEStreamCipher
++    // {
++    //     public DESede_CFB8()
++    //     {
++    //         super(new CFBBlockCipher(new DESedeEngine(), 8), 64);
++    //     }
++    // }
++    //
++    // /**
++    //  * SKIPJACK
++    //  */
++    // static public class Skipjack_CFB8
++    //     extends JCEStreamCipher
++    // {
++    //     public Skipjack_CFB8()
++    //     {
++    //         super(new CFBBlockCipher(new SkipjackEngine(), 8), 64);
++    //     }
++    // }
++    //
++    // /**
++    //  * Blowfish
++    //  */
++    // static public class Blowfish_CFB8
++    //     extends JCEStreamCipher
++    // {
++    //     public Blowfish_CFB8()
++    //     {
++    //         super(new CFBBlockCipher(new BlowfishEngine(), 8), 64);
++    //     }
++    // }
++    //
++    // /**
++    //  * Twofish
++    //  */
++    // static public class Twofish_CFB8
++    //     extends JCEStreamCipher
++    // {
++    //     public Twofish_CFB8()
++    //     {
++    //         super(new CFBBlockCipher(new TwofishEngine(), 8), 128);
++    //     }
++    // }
++    //
++    // /**
++    //  * DES
++    //  */
++    // static public class DES_OFB8
++    //     extends JCEStreamCipher
++    // {
++    //     public DES_OFB8()
++    //     {
++    //         super(new OFBBlockCipher(new DESEngine(), 8), 64);
++    //     }
++    // }
++    //
++    // /**
++    //  * DESede
++    //  */
++    // static public class DESede_OFB8
++    //     extends JCEStreamCipher
++    // {
++    //     public DESede_OFB8()
++    //     {
++    //         super(new OFBBlockCipher(new DESedeEngine(), 8), 64);
++    //     }
++    // }
++    //
++    // /**
++    //  * SKIPJACK
++    //  */
++    // static public class Skipjack_OFB8
++    //     extends JCEStreamCipher
++    // {
++    //     public Skipjack_OFB8()
++    //     {
++    //         super(new OFBBlockCipher(new SkipjackEngine(), 8), 64);
++    //     }
++    // }
++    //
++    // /**
++    //  * Blowfish
++    //  */
++    // static public class Blowfish_OFB8
++    //     extends JCEStreamCipher
++    // {
++    //     public Blowfish_OFB8()
++    //     {
++    //         super(new OFBBlockCipher(new BlowfishEngine(), 8), 64);
++    //     }
++    // }
++    //
++    // /**
++    //  * Twofish
++    //  */
++    // static public class Twofish_OFB8
++    //     extends JCEStreamCipher
++    // {
++    //     public Twofish_OFB8()
++    //     {
++    //         super(new OFBBlockCipher(new TwofishEngine(), 8), 128);
++    //     }
++    // }
++    // END android-removed
+ }
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/PKIXCRLUtil.java bcprov-jdk15on-150/org/bouncycastle/jce/provider/PKIXCRLUtil.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/PKIXCRLUtil.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jce/provider/PKIXCRLUtil.java	2013-12-12 00:35:05.000000000 +0000
+@@ -15,7 +15,9 @@
+ import org.bouncycastle.util.StoreException;
+ import org.bouncycastle.x509.ExtendedPKIXParameters;
+ import org.bouncycastle.x509.X509CRLStoreSelector;
+-import org.bouncycastle.x509.X509Store;
++// BEGIN android-removed
++// import org.bouncycastle.x509.X509Store;
++// END android-removed
+ 
+ public class PKIXCRLUtil
+ {
+@@ -114,22 +116,24 @@
          {
              Object obj = iter.next();
  
@@ -8639,9 +8688,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/PKIXCRLUtil.jav
              {
                  CertStore store = (CertStore)obj;
  
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/PKIXCertPathValidatorSpi.java bcprov-jdk15on-152/org/bouncycastle/jce/provider/PKIXCertPathValidatorSpi.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/PKIXCertPathValidatorSpi.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jce/provider/PKIXCertPathValidatorSpi.java	2015-04-24 13:59:41.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/PKIXCertPathValidatorSpi.java bcprov-jdk15on-150/org/bouncycastle/jce/provider/PKIXCertPathValidatorSpi.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/PKIXCertPathValidatorSpi.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jce/provider/PKIXCertPathValidatorSpi.java	2014-05-05 17:28:58.000000000 +0000
 @@ -1,5 +1,8 @@
  package org.bouncycastle.jce.provider;
  
@@ -8722,9 +8771,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/PKIXCertPathVal
              // try
              // {
              //
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/X509CertificateObject.java bcprov-jdk15on-152/org/bouncycastle/jce/provider/X509CertificateObject.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/X509CertificateObject.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jce/provider/X509CertificateObject.java	2013-01-31 02:26:40.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/X509CertificateObject.java bcprov-jdk15on-150/org/bouncycastle/jce/provider/X509CertificateObject.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/X509CertificateObject.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jce/provider/X509CertificateObject.java	2013-01-31 02:26:40.000000000 +0000
 @@ -57,6 +57,9 @@
  import org.bouncycastle.asn1.x509.Extensions;
  import org.bouncycastle.asn1.x509.GeneralName;
@@ -8768,9 +8817,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/X509Certificate
                      break;
                  case GeneralName.dNSName:
                  case GeneralName.rfc822Name:
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/X509SignatureUtil.java bcprov-jdk15on-152/org/bouncycastle/jce/provider/X509SignatureUtil.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/X509SignatureUtil.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/jce/provider/X509SignatureUtil.java	2014-07-28 19:51:54.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/X509SignatureUtil.java bcprov-jdk15on-150/org/bouncycastle/jce/provider/X509SignatureUtil.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/jce/provider/X509SignatureUtil.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/jce/provider/X509SignatureUtil.java	2013-09-26 18:06:21.000000000 +0000
 @@ -14,7 +14,9 @@
  import org.bouncycastle.asn1.ASN1ObjectIdentifier;
  import org.bouncycastle.asn1.ASN1Sequence;
@@ -8844,9 +8893,9 @@ diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/jce/provider/X509SignatureUt
          else
          {
              return digestAlgOID.getId();            
-diff -Naur bcprov-jdk15on-152.orig/org/bouncycastle/x509/X509Util.java bcprov-jdk15on-152/org/bouncycastle/x509/X509Util.java
---- bcprov-jdk15on-152.orig/org/bouncycastle/x509/X509Util.java	2015-03-01 12:03:02.000000000 +0000
-+++ bcprov-jdk15on-152/org/bouncycastle/x509/X509Util.java	2014-07-28 19:51:54.000000000 +0000
+diff -Naur bcprov-jdk15on-150.orig/org/bouncycastle/x509/X509Util.java bcprov-jdk15on-150/org/bouncycastle/x509/X509Util.java
+--- bcprov-jdk15on-150.orig/org/bouncycastle/x509/X509Util.java	2013-12-03 12:18:20.000000000 +0000
++++ bcprov-jdk15on-150/org/bouncycastle/x509/X509Util.java	2013-09-26 18:06:21.000000000 +0000
 @@ -25,12 +25,16 @@
  import org.bouncycastle.asn1.ASN1Integer;
  import org.bouncycastle.asn1.ASN1ObjectIdentifier;

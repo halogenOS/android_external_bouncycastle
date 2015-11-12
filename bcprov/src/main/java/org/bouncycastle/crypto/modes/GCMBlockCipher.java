@@ -312,8 +312,7 @@ public class GCMBlockCipher
             throw new DataLengthException("Input exceeded " + MAX_INPUT_SIZE + " bytes");
         }
         // END android-added
-        if (in.length < (inOff + len))
-        {
+        if (in.length < (inOff + len)) {
             throw new DataLengthException("Input buffer too short");
         }
         int resultLen = 0;
